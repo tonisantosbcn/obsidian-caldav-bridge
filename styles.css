@@ -1,0 +1,63 @@
+/* CalDAV Bridge — dialog styles.
+   Everything uses Obsidian's own CSS variables so the dialogs follow the
+   active theme in both light and dark mode. */
+
+.cbf-wrap { display: flex; flex-direction: column; gap: 1.1em; }
+.cbf-campo { display: flex; flex-direction: column; gap: 0.4em; }
+.cbf-etiqueta { font-size: var(--font-ui-small); font-weight: 600; color: var(--text-muted); }
+.cbf-wrap input[type="text"], .cbf-wrap input[type="date"], .cbf-wrap input[type="time"],
+.cbf-wrap input[type="number"], .cbf-wrap select, .cbf-wrap textarea {
+  width: 100%; box-sizing: border-box; font-size: var(--font-ui-medium);
+  padding: 0.55em 0.7em; border-radius: var(--radius-m);
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-modifier-form-field); color: var(--text-normal);
+  line-height: 1.5; min-height: 2.6em;
+}
+/* Dropdowns were clipping their text at the bottom: they need their own
+   height and room for the arrow. */
+.cbf-wrap select {
+  height: auto; padding-right: 2em; text-overflow: ellipsis;
+  -webkit-appearance: none; appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-muted) 50%),
+                    linear-gradient(135deg, var(--text-muted) 50%, transparent 50%);
+  background-position: calc(100% - 1.1em) 55%, calc(100% - 0.75em) 55%;
+  background-size: 0.35em 0.35em, 0.35em 0.35em;
+  background-repeat: no-repeat;
+}
+.cbf-wrap textarea { min-height: 4.5em; resize: vertical; }
+.cbf-fichas { display: flex; flex-wrap: wrap; gap: 0.5em; }
+.cbf-ficha {
+  padding: 0.5em 0.9em; border-radius: var(--radius-m); cursor: pointer;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-primary-alt); color: var(--text-normal);
+  font-size: var(--font-ui-small);
+}
+.cbf-ficha.is-activa {
+  background: var(--interactive-accent); color: var(--text-on-accent);
+  border-color: var(--interactive-accent); font-weight: 600;
+}
+.cbf-fila { display: flex; gap: 0.6em; align-items: flex-end; }
+.cbf-fila > .cbf-campo { flex: 1; }
+.cbf-interruptor {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.8em;
+  padding: 0.6em 0.8em; border-radius: var(--radius-m);
+  border: 1px solid var(--background-modifier-border); background: var(--background-primary-alt);
+}
+.cbf-interruptor label { font-size: var(--font-ui-medium); cursor: pointer; }
+.cbf-oculto { display: none; }
+.cbf-espaciador { height: 0; flex: none; transition: height 0.12s ease-out; }
+/* On mobile the keyboard covers half the screen and the system does not
+   always report it. The content scrolls on its own and carries plenty of
+   room at the end, so any field can be raised to the very top. */
+.cbf-movil { max-height: 60vh; overflow-y: auto; overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch; }
+.cbf-movil .cbf-aire { height: 60vh; flex: none; }
+.cbf-aire { height: 0; flex: none; }
+.cbf-error { color: var(--text-error); font-size: var(--font-ui-small); min-height: 1.2em; }
+.cbf-botones { display: flex; gap: 0.6em; justify-content: flex-end; margin-top: 0.3em; }
+.cbf-botones button { padding: 0.6em 1.2em; font-size: var(--font-ui-medium); }
+@media (max-width: 500px) {
+  .cbf-fila { flex-direction: column; align-items: stretch; }
+  .cbf-botones { flex-direction: column-reverse; }
+  .cbf-botones button { width: 100%; }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "caldav-bridge",
+  "name": "CalDAV Bridge",
+  "version": "2.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "Create, update and delete events on any CalDAV calendar from your notes. Exposes a small API so QuickAdd or Templater scripts can send events, and dialogs to collect the data. Works on desktop and mobile.",
+  "author": "Toni Santos",
+  "isDesktopOnly": false
+}
