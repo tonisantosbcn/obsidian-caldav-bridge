@@ -299,13 +299,9 @@ let LANG = 'en';
 
 function detectLanguage() {
 	try {
-		const stored = window.localStorage.getItem('language');
-		if (stored) return String(stored).toLowerCase().startsWith('es') ? 'es' : 'en';
-	} catch (e) { /* localStorage may be unavailable */ }
-	try {
 		const nav = (typeof navigator !== 'undefined' && navigator.language) ? navigator.language : '';
 		if (String(nav).toLowerCase().startsWith('es')) return 'es';
-	} catch (e) { /* nothing */ }
+	} catch (e) { /* fall back to English */ }
 	return 'en';
 }
 
