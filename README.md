@@ -144,6 +144,14 @@ When a `select` with `nuevaOpcion` is used to type a new value, the result also 
 
 The plugin talks to one server only: the CalDAV address you type in the settings. Nothing else is sent anywhere, there is no telemetry, and no data leaves your vault other than the events you ask it to create.
 
+## Verifying a release
+
+Releases are built by a GitHub Actions workflow that records a build attestation for every file it publishes, so anyone can check that a downloaded file really came from this repository:
+
+```
+gh attestation verify main.js --repo tonisantosbcn/obsidian-caldav-bridge
+```
+
 ## Development
 
 There is no build step. `main.js` is the source, plain JavaScript with no dependencies beyond Obsidian's own API. To work on it, clone the repository into `<vault>/.obsidian/plugins/caldav-bridge/` and reload Obsidian after each change.
